@@ -1,0 +1,15 @@
+title: Guild
+type: object
+properties:
+  id:
+    type: string
+  commandPrefix:
+    type: string
+  generalChannel:
+    $ref: ./channel.v1.yaml
+  timestamp:
+    type: integer
+  videoChannel:
+    $ref: ./channel.v1.yaml
+required:
+  - id

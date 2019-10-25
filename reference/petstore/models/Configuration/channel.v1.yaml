@@ -1,0 +1,9 @@
+title: Channel
+type: object
+properties:
+  id:
+    type: string
+  lastProcessedMessageId:
+    type: string
+required:
+  - id

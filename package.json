@@ -1,0 +1,34 @@
+{
+  "author": "Robert Smieja",
+  "description": "RobBot API",
+  "devDependencies": {
+    "@stoplight/spectral": "^4.2.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "engines": {
+    "node": ">10",
+    "npm": ">6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "reference/**/*.{json,yml,yaml}": [
+      "npm run lint --",
+      "git add"
+    ]
+  },
+  "name": "robbot-api",
+  "private": true,
+  "scripts": {
+    "lint": "spectral lint ./reference/**/*.{json,yml,yaml}"
+  },
+  "version": "0.1.0"
+}

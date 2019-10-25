@@ -1,0 +1,15 @@
+title: Link
+type: object
+properties:
+  id:
+    type: string
+  url:
+    type: string
+  provider:
+    type: string
+  messageId:
+    type: string
+  guildId:
+    type: string
+required:
+  - id

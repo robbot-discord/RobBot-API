@@ -1,0 +1,209 @@
+openapi: 3.0.2
+info:
+  version: 0.1.0
+  title: RobBot API
+  license:
+    name: MIT
+  description: "RobBot's API"
+  contact:
+    name: Robert Smieja
+    url: 'https://robbot.app/'
+components:
+  schemas: {}
+  securitySchemes:
+    Discord API Key:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: []
+paths:
+  '/channel/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Return a Channel by ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Configuration/channel.v1.yaml
+      operationId: getChannelById
+      tags:
+        - channel
+      description: Return the Channel specified by the ID
+    delete:
+      summary: Delete a Channel by ID
+      responses:
+        '202':
+          description: Delete successful
+        '404':
+          description: Channel not found
+      operationId: deleteChannelById
+      tags:
+        - channel
+      description: Delete the Channel specified by the ID
+    put:
+      summary: Updates an existing Channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/channel.v1.yaml
+      responses:
+        '201':
+          description: Created
+      operationId: updateChannelById
+      tags:
+        - channel
+      description: Update the existing Channel specified by the ID
+  /channel:
+    post:
+      summary: Creates a new Channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/channel.v1.yaml
+        description: ''
+      responses:
+        '201':
+          description: Created
+      operationId: createChannel
+      description: Create a new Channel from the information sent in the Request Body
+      tags:
+        - channel
+  '/guild/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Return a Guild by ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Configuration/guild.v1.yaml
+      operationId: getGuildById
+      description: Returns the Guild specified by the ID
+      tags:
+        - guild
+    put:
+      summary: Updates an existing Guild
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/guild.v1.yaml
+      responses:
+        '201':
+          description: Created
+      operationId: updateGuildById
+      tags:
+        - guild
+      description: Update the existing Guild specified by the ID
+    delete:
+      summary: Delete Guild by ID
+      responses:
+        '200':
+          description: OK
+      operationId: deleteGuildById
+      tags:
+        - guild
+      description: Delete the Guild specified by the ID
+  /guild:
+    post:
+      summary: Creates a new Guild
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/guild.v1.yaml
+      description: Create a new Guild from the information sent in the Request Body
+      responses:
+        '201':
+          description: Created
+      operationId: createGuild
+      tags:
+        - guild
+  /link:
+    post:
+      summary: Creates a new Link
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/link.v1.yaml
+      description: Create a new Link from the information sent in the Request Body
+      responses:
+        '201':
+          description: Created
+      operationId: createLink
+      tags:
+        - link
+  '/link/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Return a Link by ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Configuration/link.v1.yaml
+      operationId: getLinkById
+      tags:
+        - link
+      description: Return the Link specified by the ID
+    put:
+      summary: Updates an existing Link
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./models/Configuration/link.v1.yaml
+      description: Update the existing Link specified by the ID
+      responses:
+        '201':
+          description: Created
+      operationId: updateLinkById
+      tags:
+        - link
+    delete:
+      summary: Delete a Link by ID
+      responses:
+        '200':
+          description: OK
+      operationId: deleteLinkById
+      tags:
+        - link
+      description: Delete the Link specified by the ID
+servers:
+  - url: 'https://api.robbot.app'
+    description: Production environment
+  - url: 'https://api.robbot.dev'
+    description: Developement environment
