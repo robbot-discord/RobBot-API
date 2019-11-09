@@ -11,13 +11,13 @@ info:
 components:
   schemas: {}
   securitySchemes:
-    Discord API Key:
+    'DiscordAPIKey':
       type: oauth2
       flows:
         clientCredentials:
           tokenUrl: ''
           refreshUrl: ''
-          scopes: []
+          scopes: {}
 paths:
   '/channel/{id}':
     parameters:
