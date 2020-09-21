@@ -2,9 +2,9 @@
   "author": "Robert Smieja",
   "description": "RobBot API",
   "devDependencies": {
-    "@stoplight/spectral": "^4.2.0",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2"
+    "@stoplight/spectral": "^5.5.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0"
   },
   "directories": {
     "doc": "docs"
@@ -28,6 +28,7 @@
   "name": "robbot-api",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "lint": "spectral lint ./reference/**/*.{json,yml,yaml}"
   },
   "version": "0.1.0"
